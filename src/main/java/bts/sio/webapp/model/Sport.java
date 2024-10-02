@@ -7,5 +7,5 @@ import lombok.Data;
 public class Sport {
     private Integer id;
     private String nom;
-    private String descriptif;
+    private String description;
 }
