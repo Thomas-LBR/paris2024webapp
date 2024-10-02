@@ -17,13 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class SportController {
 
     @Autowired
-    private SportService sportservice; // Correction ici (SportService au lieu de portService)
+    private SportService sportservice;
 
-    @GetMapping("/")
+    @GetMapping("/listerSports")
     public String home(Model model) {
-        Iterable<Sport> listSport = sportservice.getSports();
-        model.addAttribute("sports", listSport); // Correction ici : "sports" au lieu de "sport", et listSport au lieu de listSports
-        return "home";
+        Iterable<Sport> listSports = sportservice.getSports();
+        model.addAttribute("sports", listSports);
+        return "sport/listerSports";
     }
 
     @GetMapping("/createSport")
@@ -50,8 +50,8 @@ public class SportController {
     public ModelAndView saveSport(@ModelAttribute Sport sport) { // Correction du nom de la méthode
         System.out.println("controller save=" + sport.getNom());
         if (sport.getId() != null) {
-            Sport current = sportservice.getSport(sport.getId()); // Correction ici (sportservice au lieu de sportrevice)
-            sport.setNom(current.getNom()); // Ceci écrase le nom existant, assurez-vous que c'est voulu.
+            Sport current = sportservice.getSport(sport.getId());
+            sport.setNom(current.getNom());
         }
         sportservice.saveSport(sport);
         return new ModelAndView("redirect:/");
