@@ -14,15 +14,15 @@ public class SportService {
     private SportProxy sportProxy;
 
     public Sport getSport(final int id) {
-        return sportProxy.getSport(id);  // Récupérer un sport par ID
+        return sportProxy.getSport(id);
     }
 
     public Iterable<Sport> getSports() {
-        return sportProxy.getSports();  // Correction ici pour récupérer tous les sports
+        return sportProxy.getSports();
     }
 
     public void deleteSport(final int id) {
-        sportProxy.deleteSport(id);  // Supprimer un sport par ID
+        sportProxy.deleteSport(id);
     }
 
     public Sport saveSport(Sport sport) {
